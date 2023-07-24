@@ -1,0 +1,17 @@
+h3 a {
+    text-decoration: none;
+}
+.nav {
+    display: flex;
+    justify-content: flex-end;
+    /* Add any other desired styles */
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+}
+.navbar-container {
+    display: flex;
+    align-items: center;
+}

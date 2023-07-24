@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="btn-container">
+        <label class="add-note-btn paper-btn btn-primary-outline" (click)="showForm = true">Add Note +</label>
+        
+    </div>
+    
+    <div class="note-container" *ngIf="showForm">
+        <form [formGroup]="noteForm" (submit)="saveNote()">
+            <input type="text" formControlName="title" id="title" placeholder="Title">
+            <textarea type="text" formControlName="content" id="content" placeholder="Write your note here..."></textarea>
+            <button type="submit" class="btn-small paper-btn">Save</button>
+        </form>
+    </div>
+</div>
