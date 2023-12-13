@@ -17,10 +17,8 @@ export class CreateNoteComponent {
 
   constructor(private noteService: NoteService){}
 
-  addNote(){
+  createNote(){
     this.showForm = true;
-
-   
   }
 
   saveNote(){
@@ -28,6 +26,13 @@ export class CreateNoteComponent {
 
     this.noteService.createNote(newNote).subscribe((res:any)=>{
       console.log(res);
-    })
+      this.noteService.onAddNote(res.note);
+      this.noteForm.reset();
+    });
+  }
+
+  cancelNote(){
+    this.showForm = false;
+    this.noteForm.reset();
   }
 }

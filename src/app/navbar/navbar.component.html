@@ -1,7 +1,6 @@
-
 <nav class="border fixed split-nav">
   <div class="nav-brand">
-    <h3><a href="#">Get PaperCSS</a></h3>
+    <h1>Paper Notes</h1>
   </div>
   <div class="collapsible">
     <input id="collapsible1" type="checkbox" name="collapsible1">
@@ -10,27 +9,24 @@
       <div class="bar2"></div>
       <div class="bar3"></div>
     </label>
-    <div class="navbar-container">
-      <form class="form-inline">
-        <div class="form-group d-flex">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </div>
-      </form>
-      <div class="collapsible-body">
-        <ul class="inline">
-          <li class="nav-item" *ngIf="!currentUser">
-            <a class="nav-link" routerLink="/signup">Sign Up</a>
-          </li>
-          <li class="nav-item" *ngIf="!currentUser">
-            <a class="nav-link" routerLink="/login">Login</a>
-          </li>
-          <li class="nav-item" *ngIf="currentUser">
-            <a class="nav-link" (click)="onLogout()">Sign Out</a>
-          </li>
-        </ul>
-      </div>
+    <div class="collapsible-body">
+      <ul class="inline">
+        <li class="nav-item">
+          <div class="form-group d-flex">
+            <input type="text" placeholder="Search notes here..." aria-label="Search" id="paperInputs1">
+            <button type="submit" class="paper-btn btn-secondary-outline ml-4">Search</button>
+          </div>
+        </li>
+        <li class="nav-item" *ngIf="!currentUser">
+          <a class="nav-link" routerLink="/signup">Sign Up</a>
+        </li>
+        <li class="nav-item" *ngIf="!currentUser">
+          <a class="nav-link" routerLink="/login">Login</a>
+        </li>
+        <li class="nav-item" *ngIf="currentUser">
+          <a class="nav-link" (click)="onLogout()">Sign Out</a>
+        </li>
+      </ul>
     </div>
   </div>
 </nav>
-  

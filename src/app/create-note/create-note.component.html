@@ -1,14 +1,18 @@
 <div class="container">
-    <div class="btn-container">
-        <label class="add-note-btn paper-btn btn-primary-outline" (click)="showForm = true">Add Note +</label>
-        
+    <div class="row btn-container">
+        <div class="col-8">
+            <button class="paper-btn btn-secondary btn-block" (click)="createNote()">New Note</button>
+        </div>
     </div>
     
     <div class="note-container" *ngIf="showForm">
         <form [formGroup]="noteForm" (submit)="saveNote()">
             <input type="text" formControlName="title" id="title" placeholder="Title">
             <textarea type="text" formControlName="content" id="content" placeholder="Write your note here..."></textarea>
-            <button type="submit" class="btn-small paper-btn">Save</button>
+            <div class="btn-container">
+                <button type="button" class="paper-btn btn-danger" style="margin-right: 10px;" (click)="cancelNote()">Cancel</button>
+                <button type="submit" class="paper-btn btn-success" (click)="saveNote()">Save</button>
+            </div>
         </form>
     </div>
 </div>

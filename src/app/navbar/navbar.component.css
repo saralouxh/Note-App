@@ -1,17 +1,24 @@
 h3 a {
     text-decoration: none;
 }
-.nav {
+nav {
+    height: 90px;
     display: flex;
-    justify-content: flex-end;
-    /* Add any other desired styles */
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+li.nav-item {
+    cursor: pointer;
+    margin-right: 1rem;
+    padding: 0;
+}
+.collapsible {
+    display: flex;
+    align-items: center;
+}
+.form-group input, button {
+    padding: 0.5rem;
+    margin-top: 10px;
 }
 
-.form-group {
-    display: flex;
-    align-items: center;
-}
-.navbar-container {
-    display: flex;
-    align-items: center;
-}

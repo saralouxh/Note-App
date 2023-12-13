@@ -21,31 +21,43 @@ export class NotesListComponent implements OnInit{
   constructor(private noteService: NoteService){}
 
   ngOnInit(): void {
+    this.noteService.currentUserNotesSubject.subscribe((notes: Note[]) => {
+      this.notesList = notes;
+    });
+   
     this.noteService.fetchNotes().subscribe((res:any)=>{
       console.log(res);
       this.notesList = res.notes;
-    })
+      this.noteService.setNotes(this.notesList);
+    });
+
   }
 
   editNote(note: Note){
+    this.showForm = true;
     this.selectedNote = note;
+    console.log(this.selectedNote)
     this.noteForm.patchValue({
       title: note.title,
       content: note.content
     });
-    this.showForm = true;
   }
-
-  // addNote(){
-  //   this.showForm = true;
-  // }
 
   saveNote(){
     const updatedNote = this.noteForm.value;
     this.noteService.onUpdateNote(updatedNote, this.selectedNote.id).subscribe({
       next: (res: any)=>{
-        this.noteService.updateNote(res.note)
+        this.noteService.updateNote(res.note);
+        this.showForm = false;
       }
-    })
+    });
+  }
+
+  deleteNote(){
+    this.noteService.onDeleteNote(this.selectedNote.id).subscribe((res) => {
+      this.noteService.setNotes(this.notesList);
+      this.showForm = false;
+    });
+    
   }
 }

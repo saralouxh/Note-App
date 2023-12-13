@@ -1,7 +1,5 @@
 <div class="container">
 
-    <app-create-note></app-create-note>
-
     <div class="child-borders">
         <div class="note-container" *ngFor="let note of notesList" (click)="editNote(note)">
             <h3 class="title">{{ note.title }}</h3>
@@ -10,11 +8,15 @@
         
     </div>
 
-    <div class="note-edit-form" *ngIf="showForm">
-        <form [formGroup]="noteForm">
-          <input type="text" formControlName="title">
-          <textarea formControlName="content"></textarea>
-          <button type="button" (click)="saveNote()">Save</button>
-        </form>
+    <div class="overlay" *ngIf="showForm">
+        <div class="note-edit-form">
+            <form [formGroup]="noteForm">
+              <input class="input-block" type="text" formControlName="title">
+              <textarea class="input-block" formControlName="content"></textarea>
+              <button type="button" (click)="saveNote()">Save</button>
+              <button type="button" class="delete-btn" (click)="deleteNote(note)">Delete</button>
+            </form>
+        </div>
     </div>
+   
 </div>

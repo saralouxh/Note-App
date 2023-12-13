@@ -51,6 +51,19 @@ export class NoteService {
     this.currentUserNotesSubject.next(notes);
   }
 
+  onAddNote(note){
+    this.setNotes([...this.currentUserNotes, note]);
+    console.log(this.currentUserNotes)
+  }
+
+  updateNote(updatedNote){
+    this.updatedNoteSubject.next(updatedNote);
+    const index = this.currentUserNotes.findIndex((note) => note.id === updatedNote.id)
+    if (index !== -1) {
+      this.currentUserNotes[index] = updatedNote;
+    }
+  }
+
   onUpdateNote(note, id){
     const token = this.authService.getToken();
 
@@ -61,10 +74,14 @@ export class NoteService {
     });
   }
 
-  updateNote(updatedNote){
-    this.updatedNoteSubject.next(updatedNote);
-    const index = this.currentUserNotes.findIndex(note => note.id === updatedNote.id)
-    this.currentUserNotes[index] = updatedNote;
-    this.setNotes(this.currentUserNotes);
+  onDeleteNote(id){
+    const token = this.authService.getToken();
+
+    return this.http.delete(`http://localhost:3000/notes/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token.value}`
+      }
+    });
   }
+
 }
