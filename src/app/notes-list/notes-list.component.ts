@@ -53,11 +53,20 @@ export class NotesListComponent implements OnInit{
     });
   }
 
+  cancelNote(){
+    this.showForm = false;
+  }
+
   deleteNote(){
-    this.noteService.onDeleteNote(this.selectedNote.id).subscribe((res) => {
-      this.noteService.setNotes(this.notesList);
-      this.showForm = false;
+    this.noteService.onDeleteNote(this.selectedNote.id).subscribe({
+      next: (res: any)=>{
+        // Remove the deleted note from the notesList
+        this.notesList = this.notesList.filter(note => note.id !== this.selectedNote.id);
+        // Notify subscribers about the updated notesList
+        this.noteService.setNotes(this.notesList);
+        // Hide the form
+        this.showForm = false;
+      }
     });
-    
   }
 }

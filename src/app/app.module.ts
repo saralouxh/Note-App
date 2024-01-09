@@ -11,7 +11,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { LoginComponent } from './auth/login/login.component';
 import { CreateNoteComponent } from './create-note/create-note.component';
-import { NoteModalComponent } from './note-modal/note-modal.component';
+import { SearchNotesComponent } from './search-notes/search-notes.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +21,7 @@ import { NoteModalComponent } from './note-modal/note-modal.component';
     SignupComponent,
     LoginComponent,
     CreateNoteComponent,
-    NoteModalComponent
+    SearchNotesComponent
   ],
   imports: [
     BrowserModule,

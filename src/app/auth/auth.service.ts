@@ -82,4 +82,12 @@ export class AuthService {
   removeToken(){
     localStorage.removeItem('token');
   }
+
+  isLoggedIn(){
+    const token = this.getToken();
+    if(token){
+      return true;
+    }
+    return false;
+  }
 }

@@ -1,13 +1,13 @@
 <div class="container">
 
     <div class="child-borders">
-        <div class="note-container" *ngFor="let note of notesList" (click)="editNote(note)">
+        <div class="note-container" *ngFor="let note of filteredNotes">
             <h3 class="title">{{ note.title }}</h3>
             <p class="content">{{ note.content }}</p>
         </div>
     </div>
 
-    <div class="overlay" *ngIf="showForm">
+    <!-- <div class="overlay" *ngIf="showForm">
         <div class="note-edit-form">
             <form [formGroup]="noteForm">
                 <input class="input-block" type="text" id="paperInputs3" formControlName="title">
@@ -17,7 +17,7 @@
                 <button type="button" class="btn-danger" (click)="deleteNote(note)">Delete</button>
             </form>
         </div>
-    </div>
+    </div> -->
 
    
 </div>

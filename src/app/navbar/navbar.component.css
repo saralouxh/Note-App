@@ -1,12 +1,9 @@
-h3 a {
-    text-decoration: none;
-}
 nav {
     height: 90px;
     display: flex;
     align-items: center;
     padding: 0;
-    margin: 0;
+    margin-bottom: 0;
 }
 li.nav-item {
     cursor: pointer;

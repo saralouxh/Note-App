@@ -1,3 +1,3 @@
 <app-navbar></app-navbar>
-<app-create-note></app-create-note>
+<app-create-note *ngIf="isUserLoggedIn()"></app-create-note>
 <router-outlet></router-outlet>

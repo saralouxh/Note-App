@@ -25,9 +25,10 @@ export class CreateNoteComponent {
     const newNote = this.noteForm.value;
 
     this.noteService.createNote(newNote).subscribe((res:any)=>{
-      console.log(res);
       this.noteService.onAddNote(res.note);
+      console.log(res);
       this.noteForm.reset();
+      this.showForm = false;
     });
   }
 

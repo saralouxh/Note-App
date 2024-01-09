@@ -7,6 +7,7 @@ import { Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class NoteService {
+  private apiUrl = 'http://localhost:3000/notes';
   currentUserNotes = [];
   currentUserNotesSubject: Subject<any> = new Subject;
   updatedNoteSubject: Subject<any> = new Subject;
@@ -16,10 +17,18 @@ export class NoteService {
     private authService: AuthService
   ) { }
 
+  searchNotes(term: string){
+    const token = this.authService.getToken();
+    return this.http.get(`${this.apiUrl}/search?term=${term}`, {
+      headers: {
+        Authorization: `Bearer ${token.value}`
+      }
+    });
+  }
+
   fetchNotes(){
     const token = this.authService.getToken();
-
-    return this.http.get('http://localhost:3000/notes', {
+    return this.http.get(`${this.apiUrl}`, {
       headers: {
         Authorization: `Bearer ${token.value}`
       }
@@ -29,7 +38,7 @@ export class NoteService {
   fetchNoteById(id){
     const token = this.authService.getToken();
 
-    return this.http.get(`http://localhost:3000/notes/${id}`, {
+    return this.http.get(`${this.apiUrl}/${id}`, {
       headers: {
         Authorization: `Bearer ${token.value}`
       }
@@ -39,7 +48,7 @@ export class NoteService {
   createNote(note){
     const token = this.authService.getToken();
 
-    return this.http.post('http://localhost:3000/notes', note, {
+    return this.http.post(`${this.apiUrl}`, note, {
       headers: {
         Authorization: `Bearer ${token.value}`
       }
@@ -67,7 +76,7 @@ export class NoteService {
   onUpdateNote(note, id){
     const token = this.authService.getToken();
 
-    return this.http.put(`http://localhost:3000/notes/${id}`, note, {
+    return this.http.put(`${this.apiUrl}/${id}`, note, {
       headers: {
         Authorization: `Bearer ${token.value}`
       }
@@ -77,7 +86,7 @@ export class NoteService {
   onDeleteNote(id){
     const token = this.authService.getToken();
 
-    return this.http.delete(`http://localhost:3000/notes/${id}`, {
+    return this.http.delete(`${this.apiUrl}/${id}`, {
       headers: {
         Authorization: `Bearer ${token.value}`
       }

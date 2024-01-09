@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row btn-container">
-        <div class="col-8">
+        <div class="col-6">
             <button class="paper-btn btn-secondary btn-block" (click)="createNote()">New Note</button>
         </div>
     </div>
@@ -10,8 +10,8 @@
             <input type="text" formControlName="title" id="title" placeholder="Title">
             <textarea type="text" formControlName="content" id="content" placeholder="Write your note here..."></textarea>
             <div class="btn-container">
-                <button type="button" class="paper-btn btn-danger" style="margin-right: 10px;" (click)="cancelNote()">Cancel</button>
-                <button type="submit" class="paper-btn btn-success" (click)="saveNote()">Save</button>
+                <button type="submit" class="paper-btn btn-success" style="margin-right: 10px;">Save</button>
+                <button type="button" class="paper-btn btn-warning" (click)="cancelNote()">Cancel</button>
             </div>
         </form>
     </div>

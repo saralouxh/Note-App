@@ -1,21 +1,17 @@
 <nav class="border fixed split-nav">
   <div class="nav-brand">
-    <h1>Paper Notes</h1>
+    <a href="/home" style="text-decoration: none;"><h1>Paper Notes</h1></a>
   </div>
   <div class="collapsible">
-    <input id="collapsible1" type="checkbox" name="collapsible1">
-    <label for="collapsible1">
-      <div class="bar1"></div>
-      <div class="bar2"></div>
-      <div class="bar3"></div>
-    </label>
     <div class="collapsible-body">
       <ul class="inline">
         <li class="nav-item">
-          <div class="form-group d-flex">
-            <input type="text" placeholder="Search notes here..." aria-label="Search" id="paperInputs1">
-            <button type="submit" class="paper-btn btn-secondary-outline ml-4">Search</button>
-          </div>
+          <form [formGroup]="searchForm" (ngSubmit)="onSearchNotes()">
+            <div class="form-group d-flex">
+              <input type="text" formControlName="searchTerm" placeholder="Search notes here..." aria-label="Search" id="paperInputs1">
+              <button type="submit" class="paper-btn btn-secondary-outline ml-4">Search</button>
+            </div>
+          </form>
         </li>
         <li class="nav-item" *ngIf="!currentUser">
           <a class="nav-link" routerLink="/signup">Sign Up</a>
