@@ -7,7 +7,7 @@ import { Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class NoteService {
-  private apiUrl = 'http://localhost:3000/notes';
+  private apiUrl = 'https://notes-api-wj1u.onrender.com/notes';
   currentUserNotes = [];
   currentUserNotesSubject: Subject<any> = new Subject;
   updatedNoteSubject: Subject<any> = new Subject;

@@ -24,7 +24,7 @@ export class AuthService {
   }
 
   signup(signupUser: any){
-    return this.http.post("http://localhost:3000/users/signup", signupUser)
+    return this.http.post("https://notes-api-wj1u.onrender.com/users/signup", signupUser)
   }
 
   autoSignIn(){
@@ -36,7 +36,7 @@ export class AuthService {
     }
 
     // send request to get user info
-    this.http.get("http://localhost:3000/users/me", 
+    this.http.get("https://notes-api-wj1u.onrender.com/users/me", 
     {
       headers: {
         Authorization: `Bearer ${token.value}`
@@ -51,13 +51,13 @@ export class AuthService {
   }
 
   login(loginUser: any){
-    return this.http.post("http://localhost:3000/users/login", loginUser)
+    return this.http.post("https://notes-api-wj1u.onrender.com/users/login", loginUser)
   }
 
   logout(){
     const token = this.getToken();
 
-    this.http.delete("http://localhost:3000/users/logout", {
+    this.http.delete("https://notes-api-wj1u.onrender.com/users/logout", {
       headers: {
         Authorization: `Bearer ${token.value}`
       }
