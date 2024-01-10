@@ -23,9 +23,10 @@ export class LoginComponent {
     const loginUser = this.loginForm.value;
     this.authService.login(loginUser).subscribe((res:any)=>{
       if(res.success){
+        console.log(res);
         this.authService.setCurrentUser(res.user);
-        this.route.navigate(['/home']);
         this.authService.setToken(res.token);
+        this.route.navigate(['/home']);
       }
     });
   }
